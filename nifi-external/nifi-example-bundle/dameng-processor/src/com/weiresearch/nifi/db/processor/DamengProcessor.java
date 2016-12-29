@@ -176,7 +176,7 @@ public class DamengProcessor extends AbstractProcessor {
 		Configuration conf = new Configuration();
         conf.set("fs.defaultFS", "");
 		String rslt = pro.loadDamengDataSqoop(
-				"jdbc:dm://", "5236", "", "",
+				"jdbc:dm://", "", "", "",
 				"", "", "hdfs://");//
 		System.out.println(rslt);
 
