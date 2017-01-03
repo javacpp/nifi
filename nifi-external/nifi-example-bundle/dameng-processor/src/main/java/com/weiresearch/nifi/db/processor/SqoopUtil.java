@@ -18,29 +18,28 @@ import com.cloudera.sqoop.tool.ImportTool;
 
 public class SqoopUtil {
 
+	private static final String HDFS_IMPL  = "org.apache.hadoop.hdfs.DistributedFileSystem";
+	private static final char FIELD_SEPERATION = '\t';
+	private static final char LINE_TERMINATION = '\n';
 	private static SqoopOptions SqoopOptions = null;
-	
-	static{
-		Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "");
-        conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
-		SqoopOptions = new SqoopOptions(conf);
-	}
-
 
 	public static void setUp(String db_driver, String db_url, String db_user,
-			String db_password) {
+			String db_password,String default_fs, String mr_home) {
 
-
+		Configuration conf = new Configuration();
+        	conf.set("fs.defaultFS", default_fs);
+        	conf.set("fs.hdfs.impl", HDFS_IMPL);
+		SqoopOptions = new SqoopOptions(conf);
+		
 		SqoopOptions.setConnectString(db_url);
 		SqoopOptions.setUsername(db_user);
 		SqoopOptions.setPassword(db_password);
 		SqoopOptions.setDriverClassName(db_driver);
 		SqoopOptions.setNumMappers(1);
 
-		SqoopOptions.setFieldsTerminatedBy('\t');
-		SqoopOptions.setHadoopMapRedHome("");
-		SqoopOptions.setLinesTerminatedBy('\n');
+		SqoopOptions.setFieldsTerminatedBy(FIELD_SEPERATION);
+		SqoopOptions.setHadoopMapRedHome(mr_home);
+		SqoopOptions.setLinesTerminatedBy(LINE_TERMINATION);
 		SqoopOptions.setDeleteMode(true);
 		
 	}
