@@ -77,6 +77,13 @@ public class DamengProcessor extends AbstractProcessor {
 			.name("Target Path").required(true)
 			.addValidator(StandardValidators.NON_EMPTY_VALIDATOR).build();
 
+	public static final PropertyDescriptor DEFAULT_FS = new PropertyDescriptor.Builder()
+			.name("DefaultFS").required(true)
+			.addValidator(StandardValidators.NON_EMPTY_VALIDATOR).build();
+
+	public static final PropertyDescriptor MR_HOME = new PropertyDescriptor.Builder()
+			.name("MR Home").build();
+	
 	public static final Relationship SUCCESS = new Relationship.Builder()
 			.name("SUCCESS").description("Succes Output").build();
 
@@ -90,7 +97,9 @@ public class DamengProcessor extends AbstractProcessor {
 		properties.add(DAMENG_DB_PASSWORD);
 		properties.add(DAMENG_DB_TABLE);
 		properties.add(TARGET_PATH);
-
+		properties.add(DEFAULT_FS);
+		properties.add(MR_HOME);
+		
 		this.properties = Collections.unmodifiableList(properties);
 
 		Set<Relationship> relationships = new HashSet<>();
@@ -117,10 +126,12 @@ public class DamengProcessor extends AbstractProcessor {
 		String dm_pass = props.get(DAMENG_DB_PASSWORD);
 		String dm_table = props.get(DAMENG_DB_TABLE);
 		String hdfs_target = props.get(TARGET_PATH);
+		String default_fs = props.get(DEFAULT_FS);
+		String mr_home = props.get(MR_HOME);
 		String rslt = "";// loadDamengData(dm_url,dm_port,dm_db,dm_user,dm_pass,dm_table,hdfs_target);
 		try {
 			rslt = loadDamengDataSqoop(dm_url, dm_port, dm_db, dm_user,
-					dm_pass, dm_table, hdfs_target);
+					dm_pass, dm_table, hdfs_target,default_fs,mr_home);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -157,10 +168,10 @@ public class DamengProcessor extends AbstractProcessor {
 
 	public String loadDamengDataSqoop(String dm_url, String dm_port,
 			String dm_db, String dm_user, String dm_password, String dm_table,
-			String target_path) throws InterruptedException {
+			String target_path,String default_fs, String mr_home) throws InterruptedException {
 
 		SqoopUtil
-				.setUp("dm.jdbc.driver.DmDriver", dm_url, dm_user, dm_password);
+				.setUp("dm.jdbc.driver.DmDriver", dm_url, dm_user, dm_password,default_fs,mr_home);
 		SqoopUtil.TransferringEntireTableSpecificDir(dm_table, target_path);
 		int rslt = SqoopUtil.runIt();
 		if(rslt !=0){
