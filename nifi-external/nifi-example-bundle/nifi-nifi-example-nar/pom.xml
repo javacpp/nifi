@@ -34,6 +34,11 @@
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-nifi-example-processors</artifactId>
         </dependency>
+      <dependency>
+                <groupId>com.weiresearch.nifi.db.processor</groupId>
+                <artifactId>DamengProcessor</artifactId>
+				<version>1.0.0</version>
+            </dependency>
     </dependencies>
 
 </project>
