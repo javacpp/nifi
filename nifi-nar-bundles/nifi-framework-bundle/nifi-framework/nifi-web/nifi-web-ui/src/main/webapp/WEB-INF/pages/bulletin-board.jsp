@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>NiFi Bulletin Board</title>
+        <title>数据流公告版</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="shortcut icon" href="images/nifi16.ico"/>
         <link rel="stylesheet" href="css/reset.css" type="text/css" />
@@ -48,6 +48,7 @@
         <script type="text/javascript" src="assets/angular-material/angular-material.min.js"></script>
         <script type="text/javascript" src="js/nf/nf-namespace.js?${project.version}"></script>
         <script type="text/javascript" src="js/nf/nf-ng-namespace.js?${project.version}"></script>
+        <script type="text/javascript" src="js/nf/globalization/resources.js"></script>
         ${nf.bulletin.board.script.tags}
     </head>
     <body ng-controller="ngBulletinBoardAppCtrl">

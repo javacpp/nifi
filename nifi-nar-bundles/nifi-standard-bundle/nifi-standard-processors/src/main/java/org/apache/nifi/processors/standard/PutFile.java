@@ -56,8 +56,8 @@ import org.apache.nifi.util.StopWatch;
 
 @SupportsBatching
 @InputRequirement(Requirement.INPUT_REQUIRED)
-@Tags({"put", "local", "copy", "archive", "files", "filesystem"})
-@CapabilityDescription("Writes the contents of a FlowFile to the local file system")
+@Tags({"推送", "本地", "复制", "归档", "文件", "文件系统"})
+@CapabilityDescription("将FlowFile的内容写入本地文件系统.")
 @SeeAlso({FetchFile.class, GetFile.class})
 @ReadsAttribute(attribute = "filename", description = "The filename to use when writing the FlowFile to disk.")
 public class PutFile extends AbstractProcessor {
