@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>NiFi Login</title>
+        <title>数据流登录</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="shortcut icon" href="images/nifi16.ico"/>
         <link rel="stylesheet" href="css/reset.css" type="text/css" />
@@ -39,16 +39,17 @@
         <script type="text/javascript" src="js/jquery/qtip2/jquery.qtip.min.js"></script>
         <script type="text/javascript" src="js/jquery/ui-smoothness/jquery-ui-1.10.4.min.js"></script>
         <script type="text/javascript" src="js/nf/nf-namespace.js?${project.version}"></script>
+        <script type="text/javascript" src="js/nf/globalization/resources.js"></script>
         ${nf.login.script.tags}
     </head>
     <body class="login-body">
         <div id="login-user-links-container">
             <ul id="login-user-links" class="links">
                 <li id="user-logout-container" style="display: none;">
-                    <span id="user-logout" class="link">log out</span>
+                    <span id="user-logout" class="link">登出</span>
                 </li>
                 <li>
-                    <span id="user-home" class="link">home</span>
+                    <span id="user-home" class="link">主页</span>
                 </li>
             </ul>
             <div class="clear"></div>

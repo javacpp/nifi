@@ -163,6 +163,11 @@ License Exception ENC Technology Software Unrestricted (TSU) exception (see the
 BIS Export Administration Regulations, Section 740.13) for both object code and
 source code.
 
+## 汉化，日化切换操作
+1.切换js/nf/globalization下的resource.js文件
+2.修改web.xml中javax.servlet.jsp.jstl.fmt.locale配置的参数，中文为cn，英文为en，日文为jp
+3.重新build，注意nifi-web目录下的pom配置中，打包的版本是snapshot版本，不然默认官方配置打包会打不进去我们自己build的war包
+
 The following provides more details on the included cryptographic software: 
 
 Apache NiFi uses BouncyCastle, Jasypt, JCraft Inc., and the built-in 

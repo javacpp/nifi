@@ -73,8 +73,8 @@ import org.apache.nifi.processor.util.StandardValidators;
 
 @TriggerWhenEmpty
 @InputRequirement(Requirement.INPUT_FORBIDDEN)
-@Tags({"local", "files", "filesystem", "ingest", "ingress", "get", "source", "input"})
-@CapabilityDescription("Creates FlowFiles from files in a directory.  NiFi will ignore files it doesn't have at least read permissions for.")
+@Tags({"本地", "文件", "文件系统", "提取", "入口", "获取", "来源", "输入"})
+@CapabilityDescription("从目录中的文件创建FlowFiles. 数据流将忽略它至少没有读取权限的文件.")
 @WritesAttributes({
     @WritesAttribute(attribute = "filename", description = "The filename is set to the name of the file on disk"),
     @WritesAttribute(attribute = "path", description = "The path is set to the relative path of the file's directory on disk. For example, "
